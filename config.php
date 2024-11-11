@@ -1,6 +1,6 @@
 <?php
 
-$database_name = "event_managment";
+$database_name = "event_management";
 $database_user = "root";
 $database_password = "";
 
