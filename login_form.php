@@ -29,10 +29,10 @@ session_start(); // Start the session at the top
     ?>
     <form action="login.php" method="POST">
       <div class="input-box">
-        <input type="email" placeholder="Enter your email" required>
+        <input name="email" type="email" placeholder="Enter your email" required>
       </div>
       <div class="input-box">
-        <input type="password" placeholder="Create password" required>
+        <input name="password" type="password" placeholder="Create password" required>
       </div>
       <div class="policy">
         <input type="checkbox">
