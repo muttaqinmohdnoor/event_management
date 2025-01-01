@@ -66,7 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         VALUES ('$title', '$description', '$type', '$location', '$date_from', '$date_to')";
 
         if ($connection->query($sql)) {
-            $success = "Event request submitted successfully!";
+            $_SESSION['success'] = "Event request submitted successfully!";
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit();
         } else {
             $error = "Failed to submit event request. Please try again.";
         }
@@ -149,8 +151,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="alert alert-danger"><?php echo $error; ?></div>
         <?php endif; ?>
 
-        <?php if (isset($success)): ?>
-            <div class="alert alert-success"><?php echo $success; ?></div>
+        <?php if (isset($_SESSION['success'])): ?>
+            <div class="alert alert-success">
+                <?php
+                echo $_SESSION['success'];
+                unset($_SESSION['success']); // Clear the message after displaying it
+                ?>
+            </div>
         <?php endif; ?>
 
         <form method="POST" action="" id="eventForm" class="text-dark needs-validation" novalidate>
