@@ -140,8 +140,19 @@ $totalPages = ceil($total / $limit);
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand text-light" href="home.php">Home</a>
-            <a class="navbar-brand text-light" href="products.php">Products</a>
+            <?php
+            // Get the current script name (e.g., 'event_request.php')
+            $current_page = basename($_SERVER['PHP_SELF']);
+            ?>
+            <a class="navbar-brand text-light"
+                href="home.php"
+                style="<?php echo $current_page == 'home.php' ? 'text-decoration: underline;' : ''; ?>">Home</a>
+            <a class="navbar-brand text-light"
+                href="products.php"
+                style="<?php echo $current_page == 'products.php' ? 'text-decoration: underline;' : ''; ?>">Products</a>
+            <a class="navbar-brand text-light"
+                href="event_request.php"
+                style="<?php echo $current_page == 'event_request.php' ? 'text-decoration: underline;' : ''; ?>">Event Request</a>
             <form action="logout.php" method="POST" class="ms-auto">
                 <button type="submit" class="btn btn-outline-danger">Logout</button>
             </form>
